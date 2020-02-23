@@ -1,0 +1,18 @@
+
+[Unit]
+Description=Start Micmac Service
+
+[Service]
+Type=simple
+PIDFile=/run/micmac.pid
+User=odm
+Group=odm
+WorkingDirectory=/micmac
+ExecStart=/usr/bin/node index.js -p 3002 --odm_path /micmac/dm
+ExecStop=/bin/kill -s QUIT 
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+

@@ -462,6 +462,7 @@ if __name__ == '__main__':
 	
 	## merge ortho tiles
 
+        system.run('cp Ortho-MEC-Malt/Orthophotomosaic* ./')
         system.run('/micmac/scripts/tiles_merge.py')
 
         progressbc.send_update(10)
@@ -479,7 +480,7 @@ if __name__ == '__main__':
 
         # apply srs and geo projection to ORTHO (UTM) and write to odm_orthophoto/
         gdal_translate(proj_str,
-                       io.join_paths(image_dir, 'Ortho-MEC-Malt/Orthophotomosaic.tif'),
+                       io.join_paths(image_dir, './Orthophotomosaic.tif'),
                        io.join_paths(project_dir, 'odm_orthophoto/odm_orthophoto.tif'))
 
         # apply srs and geo projection to DEM (UTM) and write to odm_dem/

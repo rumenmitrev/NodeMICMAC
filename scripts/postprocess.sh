@@ -59,10 +59,12 @@ done
 if hash gdal_translate 2>/dev/null; then
 	orthophoto_path="odm_orthophoto/odm_orthophoto.tif"
 	orthophoto_mbtiles_path="odm_orthophoto/odm_orthophoto.mbtiles"
-        zoom_level="ZOOM_LEVEL_STRATEGY=AUTO"
+        #zoom_level="ZOOM_LEVEL_STRATEGY=AUTO"
+        #zoom_level="ZOOM_LEVEL_STRATEGY=LOWER"
 	
 	if [ -e "$orthophoto_path" ]; then
-		gdal_translate $orthophoto_path $orthophoto_mbtiles_path -co "$zoom_level" -of MBTILES
+		#gdal_translate $orthophoto_path $orthophoto_mbtiles_path -co "$zoom_level" -of MBTILES
+		gdal_translate $orthophoto_path $orthophoto_mbtiles_path -of MBTILES
 		gdaladdo -r bilinear $orthophoto_mbtiles_path 2 4 8 16 32 64 128 256 512 1024 2048 4096 8192 16384
 	else
 		echo "No orthophoto found at $orthophoto_path: will skip MBTiles generation"

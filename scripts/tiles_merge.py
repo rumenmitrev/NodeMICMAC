@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from __future__ import division, print_function
 import os
 from glob import glob
@@ -25,7 +25,7 @@ def main():
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('-filename', action='store', type=str, default='Orthophotomosaic',
                         help="MicMac filename to tile [Orthophotomosaic]")
-    parser.add_argument('-imgdir', action='store', type=str, default='Ortho-MEC-Malt',
+    parser.add_argument('-imgdir', action='store', type=str, default='.',
                         help="Directory containing images [.]")
     args = parser.parse_args()
     
@@ -45,3 +45,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    exit(0)
