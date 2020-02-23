@@ -456,7 +456,7 @@ if __name__ == '__main__':
         porto_dst = 'Ortho-MEC-Malt/Param-Tawny.xml'
         io.copy(porto_src, porto_dst)
         #system.run('{mm3d} Porto Ortho-MEC-Malt/Param-Tawny.xml'.format(**kwargs_malt))
-        system.run('{mm3d} Tawny Ortho-MEC-Malt/'.format(**kwargs_malt))
+        system.run('{mm3d} Tawny Ortho-MEC-Malt/ DEq=0 DegRap=1'.format(**kwargs_malt))
 	
         progressbc.send_update(10)
 	
