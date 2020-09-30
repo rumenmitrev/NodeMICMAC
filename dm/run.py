@@ -474,7 +474,7 @@ if __name__ == '__main__':
             'nuage': get_last_etape('MEC-Malt/NuageImProf_STD-MALT_Etape_*.xml')
         }
         system.run('{mm3d} Nuage2Ply {nuage} Attr=Ortho-MEC-Malt/Orthophotomosaic.tif Offs=[0,0,0] '
-            '64B=1 Out={ply} Mesh=1 Normale=1'.format(**kwargs_nuage))
+            '64B=1 Out={ply} Mesh=1 '.format(**kwargs_nuage))
 
         progressbc.send_update(95)
 
