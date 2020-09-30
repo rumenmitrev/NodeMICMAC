@@ -471,9 +471,9 @@ if __name__ == '__main__':
         kwargs_nuage = {
             'mm3d': mm3d,
             'ply': io.join_paths(project_dir, 'odm_georeferencing/odm_georeferenced_model.ply'),
-            'nuage': get_last_etape('MEC-Malt/NuageImProf_STD-MALT_Etape_*.xml')
+            'nuage': get_last_etape('MEC-Malt/NuageImProf_STD-MALT_Etape_*.xml Mesh=1')
         }
-        system.run('{mm3d} Nuage2Ply {nuage} Attr=Ortho-MEC-Malt/Orthophotomosaic.tif '
+        system.run('{mm3d} Nuage2Ply {nuage} Attr=Ortho-MEC-Malt/Orthophotomosaic.tif Offs=[0,0,0] '
             '64B=1 Out={ply}'.format(**kwargs_nuage))
 
         progressbc.send_update(95)
