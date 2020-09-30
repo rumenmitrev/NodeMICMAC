@@ -30,7 +30,7 @@ if hash gdaldem 2>/dev/null; then
 
 		gdaldem color-relief $dem_path $script_path/color_relief.txt "odm_dem/""$dem_product""_colored.tif" -alpha -co ALPHA=YES
 		gdaldem hillshade $dem_path "odm_dem/""$dem_product""_hillshade.tif" -z 1.0 -s 1.0 -az 315.0 -alt 45.0
-		python "$script_path/hsv_merge.py" "odm_dem/""$dem_product""_colored.tif" "odm_dem/""$dem_product""_hillshade.tif" "odm_dem/""$dem_product""_colored_hillshade.tif"
+		python3 "$script_path/hsv_merge.py" "odm_dem/""$dem_product""_colored.tif" "odm_dem/""$dem_product""_hillshade.tif" "odm_dem/""$dem_product""_colored_hillshade.tif"
 	done
 else
 	echo "gdaldem is not installed, will skip colored hillshade generation"
@@ -41,7 +41,7 @@ g2t_options="--processes $(nproc) -z 12-21 -n -w none"
 orthophoto_path="odm_orthophoto/odm_orthophoto.tif"
 
 if [ -e "$orthophoto_path" ]; then
-	python "$script_path/gdal2tiles.py" $g2t_options $orthophoto_path orthophoto_tiles
+	python3 "$script_path/gdal2tiles.py" $g2t_options $orthophoto_path orthophoto_tiles
 else
 	echo "No orthophoto found at $orthophoto_path: will skip tiling"
 fi
@@ -49,7 +49,7 @@ fi
 for dem_product in ${dem_products[@]}; do
 	colored_dem_path="odm_dem/""$dem_product""_colored_hillshade.tif"
 	if [ -e "$colored_dem_path" ]; then
-		python "$script_path/gdal2tiles.py" $g2t_options $colored_dem_path "$dem_product""_tiles"
+		python3 "$script_path/gdal2tiles.py" $g2t_options $colored_dem_path "$dem_product""_tiles"
 	else
 		echo "No $dem_product found at $colored_dem_path: will skip tiling"
 	fi
