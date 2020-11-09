@@ -492,6 +492,6 @@ if __name__ == '__main__':
 
         exit(0)
 
-    except Exception, e:
+    except Exception as e:
         log.MM_ERROR(e)
         exit(1)
